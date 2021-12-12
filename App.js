@@ -1,12 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-
+import { StatusBar } from "expo-status-bar";
+import React from "react";
+import { StyleSheet, Text, View, SafeAreaView } from "react-native";
+import Home from "./screens/Home";
+import { useFonts } from "expo-font";
+import AppLoading from "expo-app-loading";
 export default function App() {
+  let [fontsLoaded] = useFonts({
+    "Rubik-Bold": require("./assets/fonts/Rubik-Bold.ttf"),
+    "Rubik-ExtraBold": require("./assets/fonts/Rubik-ExtraBold.ttf"),
+    "Rubik-Medium": require("./assets/fonts/Rubik-Medium.ttf"),
+    "Rubik-Regular": require("./assets/fonts/Rubik-Regular.ttf"),
+  });
+
+  if (!fontsLoaded) return <AppLoading />;
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <Home />
     </View>
   );
 }
@@ -14,8 +23,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#eee",
   },
 });
