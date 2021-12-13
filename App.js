@@ -8,6 +8,8 @@ import RestaurantDetails from "./screens/RestaurantDetails";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 import { TransitionPresets } from "@react-navigation/stack";
+import { CartProvider } from "./store/cart-context";
+import OrderSuccesfull from "./components/RestaurantDetail/OrderSuccesfull";
 const Stack = createStackNavigator();
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -20,28 +22,38 @@ export default function App() {
 
   if (!fontsLoaded) return <AppLoading />;
   return (
-    <View style={styles.container}>
-      <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen
-            name="Home"
-            component={Home}
-            options={{
-              headerShown: false,
-              ...TransitionPresets.SlideFromRightIOS,
-            }}
-          />
-          <Stack.Screen
-            name="RestaurantDetails"
-            component={RestaurantDetails}
-            options={{
-              headerShown: false,
-              ...TransitionPresets.SlideFromRightIOS,
-            }}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </View>
+    <CartProvider>
+      <View style={styles.container}>
+        <NavigationContainer>
+          <Stack.Navigator>
+            <Stack.Screen
+              name="Home"
+              component={Home}
+              options={{
+                headerShown: false,
+                ...TransitionPresets.SlideFromRightIOS,
+              }}
+            />
+            <Stack.Screen
+              name="RestaurantDetails"
+              component={RestaurantDetails}
+              options={{
+                headerShown: false,
+                ...TransitionPresets.SlideFromRightIOS,
+              }}
+            />
+            <Stack.Screen
+              name="OrderSuccesfull"
+              component={OrderSuccesfull}
+              options={{
+                headerShown: false,
+                ...TransitionPresets.DefaultTransition,
+              }}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </View>
+    </CartProvider>
   );
 }
 

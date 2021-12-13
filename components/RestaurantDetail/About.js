@@ -10,7 +10,7 @@ export default function About({ data, navigation }) {
         resizeMode="cover"
       />
       <TouchableOpacity
-        style={{ position: "absolute", top: 40, left: 5 }}
+        style={{ position: "absolute", top: 10, left: 5 }}
         activeOpacity={0.7}
         onPress={() => {
           navigation.goBack();

@@ -1,11 +1,23 @@
 import React, { useState } from "react";
-import { View, Text, Modal, TouchableOpacity } from "react-native";
-
-export default function ViewCart() {
+import { View, Text, Modal, TouchableOpacity, StatusBar } from "react-native";
+import { useContext } from "react";
+import cartContext from "../../store/cart-context";
+import OrderDetails from "./OrderDetails";
+import OrderSuccesfull from "./OrderSuccesfull";
+export default function ViewCart({ navigation }) {
   const [modalVisible, setModalVisible] = useState(false);
 
   const renderModalContent = () => (
-    <View style={{ flex: 1, alignItems: "center", marginTop: 300 }}>
+    <View
+      style={{
+        flex: 1,
+        alignItems: "center",
+        marginTop: 400,
+
+        backgroundColor: "white",
+      }}
+    >
+      <OrderDetails />
       <TouchableOpacity
         style={{
           backgroundColor: "black",
@@ -14,13 +26,19 @@ export default function ViewCart() {
           borderRadius: 50,
           width: 150,
           alignItems: "center",
+          position: "absolute",
+          bottom: 40,
         }}
-        onPress={() => setModalVisible(false)}
+        onPress={() => {
+          setModalVisible(false);
+          navigation.navigate("OrderSuccesfull");
+        }}
       >
         <Text style={{ color: "white" }}>Checkout</Text>
       </TouchableOpacity>
     </View>
   );
+  const cartCtx = useContext(cartContext);
   return (
     <>
       <Modal
@@ -29,9 +47,15 @@ export default function ViewCart() {
         animationType="slide"
         onRequestClose={() => setModalVisible(false)}
       >
-        {renderModalContent()}
+        <View
+          style={{
+            flex: 1,
+            backgroundColor: "rgba(0,0,0,0.7)",
+          }}
+        >
+          {renderModalContent()}
+        </View>
       </Modal>
-
       <TouchableOpacity
         style={{
           backgroundColor: "black",
@@ -53,7 +77,7 @@ export default function ViewCart() {
           View Cart
         </Text>
         <Text style={{ color: "white", fontFamily: "Rubik-SemiBold" }}>
-          $23
+          {`$${cartCtx.totalAmount}`}
         </Text>
       </TouchableOpacity>
     </>

@@ -9,8 +9,7 @@ export default function Home({ navigation }) {
   const [restaurants, setRestaurants] = useState([
     {
       name: "Beachside Bar",
-      imageUrl:
-        "https://i.picsum.photos/id/1056/1920/1080.jpg?hmac=QYMVMuFjmtGsWKQU_ICfJkVQXngKzlZYH0YO7BbgYGY",
+      imageUrl: "https://wallpaperaccess.com/full/3014596.jpg",
       categories: ["Bar", "Cafe"],
       price: "$20",
       reviews: 122,
@@ -21,7 +20,7 @@ export default function Home({ navigation }) {
     {
       name: "Indian Grill",
       imageUrl:
-        "https://i.picsum.photos/id/72/1920/1080.jpg?hmac=6BY3KGhrhKlv3VOGlNKrECnIizq_P5l4v20TvanoUbE",
+        "https://www.wallpaperup.com/uploads/wallpapers/2015/07/24/761420/c0216adae91fa2889b27c73853b9ffee.jpg",
       categories: ["Bar", "Cafe"],
       price: "$14",
       reviews: 234,
@@ -32,7 +31,7 @@ export default function Home({ navigation }) {
     {
       name: "Benihaha",
       imageUrl:
-        "https://i.picsum.photos/id/43/1920/1080.jpg?hmac=POIDrb96WzZT5Tag0vJxqI1z5SDR9R56VViVZi63kvE",
+        "https://www.adalot.com/thumbs/thumb-guide-restaurant-website-development-1920x1080-people-eating-together.jpg",
       categories: ["Bar", "Cafe"],
       price: "$33",
       reviews: 235,
@@ -42,8 +41,7 @@ export default function Home({ navigation }) {
     },
     {
       name: "Sodexo",
-      imageUrl:
-        "https://i.picsum.photos/id/675/1920/1080.jpg?hmac=xDh8IOZjVU8mWWJipf-8Xpvq3uPwPzfYMD_n68ID4y0",
+      imageUrl: "https://wallpaperaccess.com/full/3692740.jpg",
       categories: ["Bar", "Cafe"],
       price: "$11",
       reviews: 2643,
@@ -54,7 +52,7 @@ export default function Home({ navigation }) {
     {
       name: "LakeView Restaurant",
       imageUrl:
-        "https://i.picsum.photos/id/650/1920/1080.jpg?hmac=zUaA5CMkMJy14ixFDKPZ3bUIqqymnVDZEtRkFBzvJp8",
+        "https://assets.architecturaldigest.in/photos/60084adc73920cfd396b3b5d/master/w_1920,h_1080,c_limit/Ishaara-Lower-Parel-Mumbai-restaurant.jpg",
       categories: ["Bar", "Cafe"],
       price: "$75",
       reviews: 123,
@@ -65,7 +63,7 @@ export default function Home({ navigation }) {
     {
       name: "Palms",
       imageUrl:
-        "https://i.picsum.photos/id/427/1920/1080.jpg?hmac=k-6P3n2rm-88nXWAkaBQXYs9Lc60zo0R6KWtH3TWn3U",
+        "https://www.questrmg.com/wp-content/uploads/2019/03/web-banner-Top-Three-Restaurant-Trends.jpg",
       categories: ["Bar", "Cafe"],
       price: "$10",
       reviews: 6532,
