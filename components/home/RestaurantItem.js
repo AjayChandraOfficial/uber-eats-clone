@@ -1,30 +1,40 @@
 import React from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-export default function RestaurantItem() {
+export default function RestaurantItem({ restaurantsData, navigation }) {
   return (
-    <TouchableOpacity activeOpacity={1}>
-      <View
-        style={{
-          backgroundColor: "white",
-          padding: 15,
-          margin: 10,
-          borderRadius: 10,
-        }}
-      >
-        <RestaurantImage />
-        <RestaurantText />
-      </View>
-    </TouchableOpacity>
+    <View style={{ flex: 1 }}>
+      {restaurantsData.map((restaurant) => (
+        <TouchableOpacity
+          key={Math.random()}
+          activeOpacity={1}
+          onPress={() => {
+            navigation.navigate("RestaurantDetails", restaurant);
+          }}
+        >
+          <View
+            style={{
+              backgroundColor: "white",
+              padding: 15,
+              margin: 10,
+              borderRadius: 10,
+            }}
+          >
+            <RestaurantImage image={restaurant.imageUrl} />
+            <RestaurantText data={restaurant} />
+          </View>
+        </TouchableOpacity>
+      ))}
+    </View>
   );
 }
 
-const RestaurantImage = () => {
+const RestaurantImage = ({ image }) => {
   return (
     <>
       <Image
         source={{
-          uri: "https://i.picsum.photos/id/211/1920/1080.jpg?hmac=8xfV4VJdZ6IFikr0O2VQce9DX8jR1S0vQLnICuFZi-I",
+          uri: image,
         }}
         style={{ width: "100%", height: 180 }}
       />
@@ -41,7 +51,7 @@ const RestaurantImage = () => {
   );
 };
 
-const RestaurantText = () => {
+const RestaurantText = ({ data }) => {
   return (
     <View
       style={{
@@ -52,7 +62,7 @@ const RestaurantText = () => {
     >
       <View>
         <Text style={{ fontSize: 16, fontFamily: "Rubik-Bold" }}>
-          Farmhouse Thai Cuisine
+          {data.name}
         </Text>
 
         <Text
@@ -62,8 +72,9 @@ const RestaurantText = () => {
         </Text>
       </View>
       <View
+        // "#c6d9c1",#dbe0a4
         style={{
-          backgroundColor: "#eee",
+          backgroundColor: data.rating >= 4 ? "#c6d9c1" : "#dbe0a4",
           height: 30,
           width: 30,
           alignItems: "center",
@@ -71,7 +82,9 @@ const RestaurantText = () => {
           borderRadius: 50,
         }}
       >
-        <Text style={{ color: "black", fontFamily: "Rubik-Regular" }}>4.5</Text>
+        <Text style={{ color: "black", fontFamily: "Rubik-Regular" }}>
+          {data.rating}
+        </Text>
       </View>
     </View>
   );

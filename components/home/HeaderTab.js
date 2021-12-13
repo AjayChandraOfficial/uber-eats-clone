@@ -2,10 +2,11 @@ import React from "react";
 import { View, Text } from "react-native";
 import { TouchableOpacity } from "react-native";
 import { useState } from "react";
-export default function HeaderTab() {
+export default function HeaderTab(props) {
   const [activeTab, setActiveTab] = useState("Delivery");
   const changeActiveTab = (tab) => {
     setActiveTab(tab);
+    props.changeActiveTab(tab);
   };
   return (
     <View style={{ flexDirection: "row", alignSelf: "center" }}>
@@ -36,6 +37,7 @@ const HeaderText = ({
 }) => (
   <View>
     <TouchableOpacity
+      activeOpacity={0.7}
       style={{
         backgroundColor: activeTab === text ? bgColor : textColor,
         paddingVertical: 6,
